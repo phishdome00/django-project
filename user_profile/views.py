@@ -1,5 +1,3 @@
-from email import message
-import email
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
@@ -203,14 +201,6 @@ class ResetPasswordView(APIView):
                 return Response({"message":"INVALID_CREDENTIALS"}, status=status.HTTP_200_OK)
 
             if user.profile.otp == '1':
-                # serializer = UserResetPasswordSerializer(user, request.data)
-                # request.POST._mutable = True
-                # data = request.data
-                # data['password'] = request.data.get('new_password')
-                # serializer = UserResetPasswordSerializer(user, data=request.data)
-                # if serializer.is_valid():
-                #     serializer.save()
-
                 user.set_password(new_password)
                 user.save()
                 user.profile.otp=None

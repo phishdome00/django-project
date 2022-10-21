@@ -135,6 +135,8 @@ EMAIL_HOST_USER= ''
 EMAIL_HOST_PASSWORD= ''
 EMAIL_PORT = 587
 EMAIL_USE_SSL= False
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
