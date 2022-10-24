@@ -19,10 +19,12 @@ class AuthSignUpView(APIView):
     def post(self,request,format=None):
         try:
             data = request.data
-            user=User.objects.get(email=data['user_fk']['email'])
-            if user:
-                return Response({"message":"Email already exists"}, status=status.HTTP_400_BAD_REQUEST)
-
+            try:
+                user=User.objects.get(email=data['user_fk']['email'])
+                if user:
+                    return Response({"message":"Email already exists"}, status=status.HTTP_400_BAD_REQUEST)
+            except:
+                pass
             serializer = ProfileSignupSerializer(data=data)
             if serializer.is_valid():
                 serializer.save()
