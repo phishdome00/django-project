@@ -39,7 +39,6 @@ class AuthSignUpView(APIView):
             else:
                 return Response(serializer.errors)
         except Exception as e:
-            print(e)
             return Response({"message":"Username aleady exists"}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -76,7 +75,6 @@ class AuthLoginView(APIView):
                 username=user.username
                 ## Authenticate ##
                 user = authenticate(username=username, password=password)
-                print(user)
             except:
                 user = None
 

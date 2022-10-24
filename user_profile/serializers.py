@@ -30,9 +30,21 @@ class ProfileSignupSerializer(WritableNestedModelSerializer, serializers.ModelSe
 
 
 class ProfileLoginSerializer(serializers.ModelSerializer):
+    user_type = serializers.SerializerMethodField()
     class Meta(object):
         model = Profile
-        fields = ('__all__' )
+        fields = ('id', 'phone_no', 'slug', 'user_type')
+
+    def get_user_type(self,obj):
+        if obj.user_type==1:
+            return "Admin"
+        elif obj.user_type==2:
+            return "Editor"
+        elif obj.user_type==3:
+            return "Customer"
+        else:
+            return "No User Type"
+
 
 
 class UserLoginSerializer(serializers.ModelSerializer):
