@@ -18,7 +18,7 @@ class AppCreateUpdateView(APIView):
         data=request.data
 
         # set to mutable
-        data._mutable = True
+        # data._mutable = True
 
         data['user']=user.pk
 
