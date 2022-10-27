@@ -23,6 +23,7 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('user/', include('user_profile.urls')),
     path('app/', include('apps.urls')),
+    path('violations/',include('violations.urls')),
 
 
 ]
