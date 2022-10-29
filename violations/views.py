@@ -13,10 +13,11 @@ import datetime
 class ViolationsListView(APIView):
 
     def post(self,request,format=None):
-        app=request.GET.get('app')
+
         data=request.data
         from_date=data.get('from_date')
         to_date=data.get('to_date')
+        app=data.get('app')
 
     
         start_time = datetime.datetime.strptime(from_date, '%Y-%m-%d').date()
